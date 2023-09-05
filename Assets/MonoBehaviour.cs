@@ -7,7 +7,7 @@ public class move2 : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 2.0f;
+    public float playerSpeed = 2.0f;
     public float jumpHeight = 6.0f;
     private float gravityValue = -9.81f;
     public float velocidadcaidarapida;
@@ -28,7 +28,7 @@ public class move2 : MonoBehaviour
             velocidadcaidarapida = 1;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(0, 0, Input.GetAxis("Vertical"));
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         if (move != Vector3.zero)
