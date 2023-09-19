@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class move2 : MonoBehaviour
 {
+  
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -20,6 +21,7 @@ public class move2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         if(GameManager.activado == false) return;
           groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
