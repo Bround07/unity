@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Menu.SetActive(false);
+        activado = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Menu.SetActive(true);
+            activado = false;
+    }
     }
 
     public void activarui() {
