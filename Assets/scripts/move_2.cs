@@ -31,7 +31,7 @@ public class move_2 : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(0, 0, horizontal);
+        Vector3 move = new Vector3(0, 0, horizontal*-3);
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -43,7 +43,7 @@ public class move_2 : MonoBehaviour
     public void OnControllerColliderHit(ControllerColliderHit hit) {
         Debug.Log("Colosiono");
         if(hit.gameObject.name != "enemigo"){
-            horizontal = horizontal-1;
+            horizontal = horizontal*1;
         }
     }
     }
