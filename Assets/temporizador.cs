@@ -1,18 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class temporizador : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public float seconds;
+    private int minutes;
+    public TextMeshProUGUI conteo;
+
+   
+    public void reset()
     {
-        
+        seconds = 0;
+        minutes= 0;
+
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        StartCoroutine(Runtimer());
+    }
+
+
     void Update()
     {
-        
+        conteo.text=Mathf.FloorToInt(seconds).ToString("D6");
+ 
+    }
+    
+
+      IEnumerator Runtimer()
+
+{
+   
+    while(true){
+        seconds++;
+        yield return new WaitForSeconds(1);
     }
 }
+}
+
+
+    
+
