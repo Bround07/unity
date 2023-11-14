@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class move2 : MonoBehaviour
@@ -12,10 +13,13 @@ public class move2 : MonoBehaviour
     public float jumpHeight = 6.0f;
     private float gravityValue = -9.81f;
     public float velocidadcaidarapida;
+
+    private AudioSource Sonidodesalto;
     // Start is called before the first frame update
     void Start()
     {
        controller = this.GetComponent<CharacterController>();
+        Sonidodesalto = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,9 +51,11 @@ public class move2 : MonoBehaviour
     if(Input.GetButtonUp("Jump")){
         velocidadcaidarapida=2;
         gravityValue=gravityValue*velocidadcaidarapida;
+        Sonidodesalto.Play();
 
     }
         playerVelocity.y += gravityValue *velocidadcaidarapida* Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+    
 }

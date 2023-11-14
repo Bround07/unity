@@ -42,7 +42,8 @@ public class move_2 : MonoBehaviour
 
     public void OnControllerColliderHit(ControllerColliderHit hit) {
         Debug.Log("Colosiono");
-        if(hit.gameObject.name != "enemigo"){
+        if(hit.gameObject.tag != "isGrounded")
+        {
             horizontal = horizontal*1;
         }
     }
