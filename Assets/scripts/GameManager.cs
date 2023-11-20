@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static bool activado = false;
+
+    public float threshold;
 
     [SerializeField] private GameObject MiCanvas; 
 
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* este if asgina con el boton escape al menu*/
         if(Input.GetKeyDown(KeyCode.Escape)){
             Menu.SetActive(true);
             activado = false;
@@ -31,4 +35,9 @@ public class GameManager : MonoBehaviour
         GameManager.activado = true;
    
     }
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+  
 }

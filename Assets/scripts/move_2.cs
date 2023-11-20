@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class move_2 : MonoBehaviour
@@ -20,31 +21,44 @@ public class move_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                if(GameManager.activado == false) return;
+        //if(GameManager.activado == false) return;
 
-        Vector3 promedio = new Vector3(0,0,0);
-        
+
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
-        {   
+        {
             gravityValue = -9.81f;
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(0, 0, horizontal*-3);
+        Vector3 move = new Vector3(0,0, horizontal);
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
-        promedio.y = playerVelocity.y + (playerVelocity.y + gravityValue * Time.deltaTime) ;
+      
         
-        controller.Move(promedio * Time.deltaTime);
+       
     }
 
     public void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log("Colosiono");
-        if(hit.gameObject.tag != "isGrounded")
+        if (hit.gameObject.tag != "isGround")
         {
-            horizontal = horizontal*1;
+            Debug.Log("colisiomo");
+
+            horizontal = horizontal * -1;
+        }
+        
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            float yOffset = 0.6f;
+            if (transform.position.y + yOffset < collision.transform.position.y)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     }
